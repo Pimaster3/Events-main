@@ -8,7 +8,7 @@
         {
           "label": "responses",
           "connections": [
-            "ee49650b-45a2-4dc9-9a6b-6833d328b048"
+            "4224d3a4-6c33-40f9-acad-70e16e2afc77"
           ]
         }
       ],
@@ -35,11 +35,11 @@
       "inputs": [
         {
           "label": "trigger",
-          "id": "770f1479-b22c-479d-beb7-2e46efb27714"
+          "id": "4224d3a4-6c33-40f9-acad-70e16e2afc77"
         }
       ],
-      "x": 305,
-      "y": 203,
+      "x": 505,
+      "y": 204,
       "rtype": "Message",
       "rsubtype": "Send Embed",
       "formdata": [
@@ -106,8 +106,8 @@
           "id": "ee49650b-45a2-4dc9-9a6b-6833d328b048"
         }
       ],
-      "x": 506,
-      "y": 204,
+      "x": 704,
+      "y": 203,
       "rtype": "Reaction",
       "rsubtype": "Add Reaction Listener",
       "formdata": [
@@ -145,8 +145,8 @@
           "id": "9caa8ac9-a635-44e1-b4de-540330c112a0"
         }
       ],
-      "x": 704,
-      "y": 204,
+      "x": 905,
+      "y": 201,
       "rtype": "User Action",
       "rsubtype": "Add Role to User",
       "formdata": [
@@ -178,8 +178,8 @@
           "id": "9caa8ac9-a635-44e1-b4de-540330c112a0"
         }
       ],
-      "x": 706,
-      "y": 330,
+      "x": 904,
+      "y": 403,
       "rtype": "User Action",
       "rsubtype": "Add Role to User",
       "formdata": [
@@ -189,6 +189,81 @@
       "formnames": [
         "user",
         "roleName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "check user permissions",
+      "guid": "4224d3a4-6c33-40f9-acad-70e16e2afc77",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "ee49650b-45a2-4dc9-9a6b-6833d328b048",
+            "e80e2b34-191f-4725-ba25-2dacc63c71ac"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "770f1479-b22c-479d-beb7-2e46efb27714"
+        }
+      ],
+      "x": 303,
+      "y": 205,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "ADMINISTRATOR"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete message",
+      "guid": "e80e2b34-191f-4725-ba25-2dacc63c71ac",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4224d3a4-6c33-40f9-acad-70e16e2afc77"
+        }
+      ],
+      "x": 508,
+      "y": 357,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${dbsVars.CommandMessage.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
       ],
       "messageActionRows": [],
       "valueFields": []
