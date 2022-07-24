@@ -1,0 +1,62 @@
+{
+  "command": [
+    {
+      "name": "roles",
+      "actions": [
+        {
+          "name": "send embed role",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFF55",
+          "title": "Reaction roles",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "📢    Announcements\n🛠     Changlogs\n",
+          "thumbnail": "",
+          "image": "",
+          "footer": "Add/remove a reaction to add/remove the corresponding role",
+          "timestamp": "false",
+          "savetovariable": "roles_message",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "add reaction listener",
+          "category": "Reaction",
+          "type": "Add Reaction Listener",
+          "reactionActions": {
+            "📢": [
+              {
+                "name": "add role to user",
+                "category": "User Action",
+                "type": "Add Role to User",
+                "messageActionRows": [],
+                "user": "${tempVars.reaction_user.id}",
+                "rolename": "Announcements"
+              }
+            ],
+            "🛠": [
+              {
+                "name": "add role to user_1",
+                "category": "User Action",
+                "type": "Add Role to User",
+                "messageActionRows": [],
+                "user": "${tempVars.reaction_user.id}",
+                "rolename": "Changelogs"
+              }
+            ]
+          },
+          "messageActionRows": [],
+          "message": "${tempVars.roles_message.id}",
+          "duration": "0",
+          "reactionemoji": "reaction_emoji",
+          "reactionuser": "reaction_user",
+          "react": "BOOL_TRUE@@"
+        }
+      ]
+    }
+  ]
+}

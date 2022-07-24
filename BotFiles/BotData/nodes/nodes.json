@@ -1,0 +1,197 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "roles",
+      "guid": "770f1479-b22c-479d-beb7-2e46efb27714",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "ee49650b-45a2-4dc9-9a6b-6833d328b048"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 104,
+      "y": 205
+    },
+    {
+      "type": "response",
+      "name": "send embed role",
+      "guid": "ee49650b-45a2-4dc9-9a6b-6833d328b048",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "roles_message",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "9caa8ac9-a635-44e1-b4de-540330c112a0"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "770f1479-b22c-479d-beb7-2e46efb27714"
+        }
+      ],
+      "x": 305,
+      "y": 203,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFF55",
+        "Reaction roles",
+        "",
+        "",
+        "",
+        "",
+        "📢    Announcements\n🛠     Changlogs\n",
+        "",
+        "",
+        "Add/remove a reaction to add/remove the corresponding role",
+        "false",
+        "roles_message",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "add reaction listener",
+      "guid": "9caa8ac9-a635-44e1-b4de-540330c112a0",
+      "reactionFields": [
+        "📢",
+        "🛠"
+      ],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "📢",
+          "connections": [
+            "f3cbc436-c1a9-4dc0-881a-4426e750ab62"
+          ]
+        },
+        {
+          "label": "🛠",
+          "connections": [
+            "a89562f8-1c64-49ed-861b-52d9daf1666b"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ee49650b-45a2-4dc9-9a6b-6833d328b048"
+        }
+      ],
+      "x": 506,
+      "y": 204,
+      "rtype": "Reaction",
+      "rsubtype": "Add Reaction Listener",
+      "formdata": [
+        "${tempVars.roles_message.id}",
+        "0",
+        "reaction_emoji",
+        "reaction_user",
+        "BOOL_TRUE@@"
+      ],
+      "formnames": [
+        "message",
+        "duration",
+        "reactionemoji",
+        "reactionuser",
+        "react"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "add role to user",
+      "guid": "f3cbc436-c1a9-4dc0-881a-4426e750ab62",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "9caa8ac9-a635-44e1-b4de-540330c112a0"
+        }
+      ],
+      "x": 704,
+      "y": 204,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.reaction_user.id}",
+        "Announcements"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "add role to user_1",
+      "guid": "a89562f8-1c64-49ed-861b-52d9daf1666b",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "9caa8ac9-a635-44e1-b4de-540330c112a0"
+        }
+      ],
+      "x": 706,
+      "y": 330,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.reaction_user.id}",
+        "Changelogs"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    }
+  ]
+}
